@@ -33,6 +33,7 @@ class MeTest extends TestCase
             'api_token',
             'created_at',
             'updated_at',
+            'attachment',
             'roles',
             'companies',
           ],

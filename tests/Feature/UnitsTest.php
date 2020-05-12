@@ -27,7 +27,8 @@ class UnitsTest extends TestCase
     ]);
 
     $this->payload = [ 
-      'first_name'  =>  'First 2'
+      'first_name'  =>  'First 2',
+      'imei_number'     =>  'no'
     ];
   }
 
@@ -36,6 +37,19 @@ class UnitsTest extends TestCase
   {
     $this->json('post', '/api/units')
       ->assertStatus(401); 
+  }
+
+  /** @test */
+  function it_requires_following_details()
+  {
+    $this->json('post', '/api/units', [], $this->headers)
+         ->assertStatus(422)
+         ->assertExactJson([
+            "errors"  =>  [
+              "imei_number"                    =>  ["The imei number field is required."],
+            ],
+            "message" =>  "The given data was invalid."
+        ]);
   }
 
   /** @test */
@@ -52,6 +66,7 @@ class UnitsTest extends TestCase
       ->assertJsonStructureExact([
           'data'   => [
             'first_name',
+            'imei_number',
             'company_id',
             'updated_at',
             'created_at',

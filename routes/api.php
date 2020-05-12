@@ -33,6 +33,8 @@ Route::resource('role_user', 'RoleUserController');
 
 Route::resource('permissions', 'PermissionsController');
 Route::resource('permission_role', 'PermissionRoleController');
+Route::resource('assign_permissions', 'AssignPermissionsController');
+Route::resource('unassign_permissions', 'UnAssignPermissionsController');
 
 Route::resource('users', 'UsersController');
 
@@ -52,5 +54,9 @@ Route::post('upload_profile', 'UploadController@uploadProfile');
 Route::post('upload_signature', 'UploadController@uploadSignature');
 Route::post('upload_bill/{id}', 'UploadController@uploadBill');
 Route::post('upload_attachments', 'UploadController@uploadAttachments');
+
+Route::post('upload_company_logo', 'UploadsController@uploadCompanyLogo');
+Route::post('upload_user_photo', 'UploadsController@uploadUserPhoto');
+
 
 Route::post('send_email','SendEmailsController@send');

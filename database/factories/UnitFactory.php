@@ -5,6 +5,7 @@ use App\Unit;
 
 $factory->define(Unit::class, function (Faker $faker) {
     return [
-        'first_name'  =>  'First 1'
+        'first_name'  =>  'First 1',
+        'imei_number' =>  'No'
     ];
 });

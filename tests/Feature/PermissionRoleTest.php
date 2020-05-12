@@ -41,7 +41,7 @@ class PermissionRoleTest extends TestCase
     $role->assignPermission(1);
     $check = $role->hasPermission(1);
     $this->assertTrue($check);
-    $this->assertCount(26, $role->permissions);
+    $this->assertCount(5, $role->permissions);
   }
 
   /** @test */
@@ -84,9 +84,9 @@ class PermissionRoleTest extends TestCase
     $role->assignPermission(1);
     $check = $role->hasPermission(1);
     $this->assertTrue($check);
-    $this->assertCount(26, $role->permissions);
+    $this->assertCount(5, $role->permissions);
     $role->unassignpermission(1);
-    $this->assertCount(25, $role->permissions);
+    $this->assertCount(4, $role->permissions);
   }
 
   /** @test */
@@ -97,7 +97,7 @@ class PermissionRoleTest extends TestCase
     $permission = Permission::find(1);
     $role->assignPermission(1);
     $check = $role->hasPermission(1);
-    $this->assertCount(26, $role->permissions);
+    $this->assertCount(5, $role->permissions);
 
     $this->payload        = [ 
       'role_id'         => $role->id,
@@ -108,6 +108,6 @@ class PermissionRoleTest extends TestCase
          ->assertStatus(201);
 
     $role->refresh();
-    $this->assertCount(25, $role->permissions);
+    $this->assertCount(4, $role->permissions);
   }
 }

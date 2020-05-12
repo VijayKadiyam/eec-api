@@ -33,7 +33,7 @@ class CreateUnitsTable extends Migration
             $table->string('pump_serial_no')->nullable();
             $table->string('motor_hp')->nullable();
             $table->string('motor_head_size')->nullable();
-            $table->string('imei_number')->nullable();
+            $table->string('imei_number', 100)->unique();
             $table->string('rms_phone_no')->nullable();
             $table->string('device_id')->nullable();
             $table->timestamps();

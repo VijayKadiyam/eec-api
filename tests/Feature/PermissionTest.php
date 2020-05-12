@@ -73,7 +73,7 @@ class PermissionTest extends TestCase
             ] 
           ]
       ]);
-    $this->assertCount(26, Permission::all());
+    $this->assertCount(5, Permission::all());
   }
 
   /** @test */

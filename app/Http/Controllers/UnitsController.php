@@ -12,9 +12,17 @@ class UnitsController extends Controller
     $this->middleware(['auth:api', 'company']);
   }
 
-  public function index()
+  public function index(Request $request)
   {
-    $units = request()->company->units;
+    $units = [];
+    if($request->search) {
+      $search = $request->search;
+      $units = request()->company->units()
+        ->where('imei_number', 'LIKE', '%' . $search . '%')
+        ->get();
+    }
+    else
+      $units = request()->company->units;
 
     return response()->json([
       'data'     =>  $units
@@ -23,6 +31,10 @@ class UnitsController extends Controller
 
   public function store(Request $request)
   {
+    $request->validate([
+      'imei_number' =>  'required'
+    ]);
+
     $unit = new Unit($request->all());
     $request->company->units()->save($unit);
 
@@ -45,5 +57,11 @@ class UnitsController extends Controller
     return response()->json([
       'data'  =>  $unit
     ], 200);
+  }
+
+  public function destroy($id)
+  {
+    $user = Unit::find($id);
+    $user->delete();
   }
 }

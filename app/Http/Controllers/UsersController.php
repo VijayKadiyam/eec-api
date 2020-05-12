@@ -24,9 +24,15 @@ class UsersController extends Controller
     $users = [];
     if($request->search == 'all')
       $users = $request->company->users()->with('roles')
-        ->whereHas('roles',  function($q) {
-          $q->where('name', '!=', 'Admin');
-        })->latest()->get();
+        ->latest()->get();
+    else if($request->search) {
+      $search = $request->search;
+      $users = $request->company->users()->with('roles')
+        ->where('name', 'LIKE', '%' . $search . '%')
+        ->orWhere('email', 'LIKE', '%' . $search . '%')
+        ->orWhere('phone', 'LIKE', '%' . $search . '%')
+        ->get();
+    }
     else 
       if($request->role_id) {
         $role = Role::find($request->role_id);
@@ -103,5 +109,11 @@ class UsersController extends Controller
       'data'  =>  $user,
       'success' =>  true
     ], 200);
+  }
+
+  public function destroy($id)
+  {
+    $user = User::find($id);
+    $user->delete();
   }
 }

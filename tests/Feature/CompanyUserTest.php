@@ -70,6 +70,7 @@ class CompanyUserTest extends TestCase
             'api_token',
             'created_at',
             'updated_at',
+            'attachment',
             'companies',
           ],
           'success'
