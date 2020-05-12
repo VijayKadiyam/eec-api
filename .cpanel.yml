@@ -1,7 +1,8 @@
 ---
 deployment:
   tasks:
+    # - sh ~/public_html/vishwjeet-api/deploy1.sh 2>&1
     - export DEPLOYPATH=~/public_html/
-    - /bin/cp -R ~/repositories/rms-api/ $DEPLOYPATH
-    - sh ~/public_html/rms-api/deploy.sh 2>&1
+    - /bin/cp -R ~/repositories/vishwjeet-api/ $DEPLOYPATH
+    - sh ~/public_html/vishwjeet-api/deploy.sh 2>&1
     
