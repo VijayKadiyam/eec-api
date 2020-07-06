@@ -24,6 +24,11 @@ class UnitsController extends Controller
     else
       $units = request()->company->units;
 
+    foreach($units as $unit) {
+      $data = $unit->datas()->latest()->first();
+      $unit['data'] = $data;
+    }
+
     return response()->json([
       'data'     =>  $units
     ], 200);

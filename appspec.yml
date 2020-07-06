@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/html/hyperx/code
+    destination: /var/www/vhosts/vishwjeet/vishwjeet-api
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies
