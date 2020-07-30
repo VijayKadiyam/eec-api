@@ -16,7 +16,7 @@ class DatasController extends Controller
 
   public function index(Unit $unit)
   {
-    $datas = $unit->datas()->paginate(10)->toArray();
+    $datas = $unit->datas()->paginate(100)->toArray();
     $datas = $datas['data'];
 
     return response()->json([
