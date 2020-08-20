@@ -14,10 +14,17 @@ class DatasController extends Controller
       ->except(['index', 'storeByDevice']);
   }
 
-  public function index(Unit $unit)
+  public function index(Request $request, Unit $unit)
   {
-    $datas = $unit->datas()->paginate(100)->toArray();
-    $datas = $datas['data'];
+    if($request->forOutput) {
+      $datas = $unit->unitDatas()->paginate(100)->toArray();
+      $datas = $datas['data'];
+    }
+    else {
+      $datas = $unit->datas()->paginate(100)->toArray();
+      $datas = $datas['data'];
+    }
+    
 
     return response()->json([
       'data'     =>  $datas

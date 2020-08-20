@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -43,6 +44,10 @@ class LoginController extends Controller
     $this->validateLogin($request);
     if($this->attemptLogin($request)) {
       $user = $this->guard()->user();
+      if(sizeof($user->companies) > 0) {
+        if($user->companies[0]->is_active == 0)
+          $this->sendInActiveLoginResponse($request);
+      }
       $user->generateToken();
       $user->roles = $user->roles;
       $user->companies = $user->companies;
@@ -83,4 +88,11 @@ class LoginController extends Controller
         'message'=>'User is not logged in'
     ],204);
   }
+
+  protected function sendInActiveLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            $this->username() => [trans('auth.inactive')],
+        ]);
+    }
 }

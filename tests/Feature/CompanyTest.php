@@ -139,7 +139,8 @@ class CompanyTest extends TestCase
             'contact_person',
             'created_at',
             'updated_at',
-            'time_zone'
+            'time_zone',
+            'is_active'
           ]
       ]);
   }

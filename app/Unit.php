@@ -20,4 +20,9 @@ class Unit extends Model
     return $this->hasMany(Data::class)
       ->latest();
   }
+
+  public function unitDatas()
+  {
+    return $this->hasMany(Data::class);
+  }
 }
