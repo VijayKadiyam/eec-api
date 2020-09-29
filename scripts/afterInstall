@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /var/www/vhosts/vishwjeet/vishwjeet-api
+cd /var/www/vhosts/rms2/rms2-api
 
 php /usr/local/bin/composer install
 
