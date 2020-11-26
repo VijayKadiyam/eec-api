@@ -33,6 +33,8 @@ class DataImport implements ToModel, WithHeadingRow
       'phase_current_b'     =>  $row['Phase Current B'],
       'dummy'               =>  $row['Dummy'],
       'reserved'            =>  $row['Reserved'],
+      'water_supply_hrs'    =>  $row['Water Supply in HRs'],
+      'water_supply_qty'    =>  $row['Water Supply Qty'],
     ];
 
     

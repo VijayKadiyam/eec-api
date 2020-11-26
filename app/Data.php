@@ -9,7 +9,7 @@ class Data extends Model
   protected $table = "datas";
 
   protected $fillable = [
-    'unit_id', 'data', 'imei_number', 'date', 'time', 'pump_status', 'voltage', 'current', 'frequency', 'temperature', 'phase_current_r', 'phase_current_y', 'phase_current_b', 'dummy', 'reserved'
+    'unit_id', 'data', 'imei_number', 'date', 'time', 'pump_status', 'voltage', 'current', 'frequency', 'temperature', 'phase_current_r', 'phase_current_y', 'phase_current_b', 'dummy', 'reserved', 'water_supply_hrs', 'water_supply_qty'
   ];
 
   public function unit()

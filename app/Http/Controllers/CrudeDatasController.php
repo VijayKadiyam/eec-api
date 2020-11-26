@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\DataImport;
 use App\CrudeData;
 use App\Data;
+use App\Unit;
 
 class CrudeDatasController extends Controller
 {
@@ -51,7 +52,15 @@ class CrudeDatasController extends Controller
         'phase_current_b'     =>  $data->phase_current_b,
         'dummy'               =>  $data->dummy,
         'reserved'            =>  $data->reserved,
+        'water_supply_hrs'    =>  $data->water_supply_hrs,
+        'water_supply_qty'    =>  $data->water_supply_qty,
       ];
+      $unit = Unit::where('imei_number', $data['imei_number'])
+        ->first();
+
+      if($unit)
+        $data['unit_id']  = $unit->id;
+
       Data::create($data);
     }
   }
