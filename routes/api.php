@@ -58,5 +58,10 @@ Route::post('upload_attachments', 'UploadController@uploadAttachments');
 Route::post('upload_company_logo', 'UploadsController@uploadCompanyLogo');
 Route::post('upload_user_photo', 'UploadsController@uploadUserPhoto');
 
+Route::resource('crude_datas', 'CrudeDatasController');
+Route::get('truncate_datas','CrudeDatasController@truncate');
+Route::post('upload_datas', 'CrudeDatasController@uploadDatas');
+Route::get('process_datas','CrudeDatasController@processFile');
+
 
 Route::post('send_email','SendEmailsController@send');
