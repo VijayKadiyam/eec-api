@@ -17,11 +17,11 @@ class DatasController extends Controller
   public function index(Request $request, Unit $unit)
   {
     if($request->forOutput) {
-      $datas = $unit->unitDatas()->paginate(100)->toArray();
+      $datas = $unit->unitDatas()->paginate(5000)->toArray();
       $datas = $datas['data'];
     }
     else {
-      $datas = $unit->datas()->paginate(100)->toArray();
+      $datas = $unit->datas()->paginate(5000)->toArray();
       $datas = $datas['data'];
     }
     
