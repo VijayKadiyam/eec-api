@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /var/www/vhosts/rms2/rms2-api
+cd /var/www/vhosts/solartive/solartive-api
 
 php /usr/local/bin/composer install
 
