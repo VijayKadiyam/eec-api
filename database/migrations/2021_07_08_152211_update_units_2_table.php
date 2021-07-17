@@ -14,7 +14,7 @@ class UpdateUnits2Table extends Migration
     public function up()
     {
         Schema::table('units', function (Blueprint $table) {
-            $table->string('imei_number', 100)->unique()->change();
+            // $table->string('imei_number', 100)->unique()->change();
         });
     }
 
