@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /var/www/vhosts/solartive/solartive-api
+cd /var/www/vhosts/premelec/premelec-api
 
 php /usr/local/bin/composer install
 
