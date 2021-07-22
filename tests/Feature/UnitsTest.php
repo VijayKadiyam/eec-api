@@ -142,7 +142,9 @@ class UnitsTest extends TestCase
             'device_id', 
             'created_at',
             'updated_at',
-            'send_email'
+            'send_email',
+            'latitude',
+            'longitude'
           ]
       ]);
   }

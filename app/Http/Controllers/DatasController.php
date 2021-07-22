@@ -43,13 +43,16 @@ class DatasController extends Controller
     $data['time'] = substr($str_arr[2], 0, 2) . ':' . substr($str_arr[2], 2, 2) . ':' . substr($str_arr[2], 4, 2);;
     $data['pump_status'] = $str_arr[3];
     $data['voltage'] = substr($str_arr[4], 0, 3);
-    // $data['current'] = substr($str_arr[4], 3, 2) . '.' . substr($str_arr[4], 5);
-    $data['current'] = substr($str_arr[4], 3);
+    $data['current'] = substr($str_arr[4], 3, 2) . '.' . substr($str_arr[4], 5);
+    // $data['current'] = substr($str_arr[4], 3);
     $data['frequency'] = $str_arr[5];
     $data['temperature'] = $str_arr[6];
-    $data['phase_current_r'] = substr($str_arr[7], 0, 2);
-    $data['phase_current_y'] = substr($str_arr[7], 2, 2);
-    $data['phase_current_b'] = substr($str_arr[7], 4, 2);
+    $data['phase_current_r'] = substr($str_arr[7], 0, 2) . '.' . substr($str_arr[7], 2, 1);
+    $data['phase_current_y'] = substr($str_arr[7], 3, 2) . '.' . substr($str_arr[7], 5, 1);
+    $data['phase_current_b'] = substr($str_arr[7], 6, 2) . '.' . substr($str_arr[7], 8, 1);
+    // $data['phase_current_r'] = substr($str_arr[7], 0, 2);
+    // $data['phase_current_y'] = substr($str_arr[7], 2, 2);
+    // $data['phase_current_b'] = substr($str_arr[7], 4, 2);
     $data['dummy'] = $str_arr[8];
     $data['reserved'] = $str_arr[9];
 
