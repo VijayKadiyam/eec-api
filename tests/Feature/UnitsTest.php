@@ -144,10 +144,11 @@ class UnitsTest extends TestCase
             'updated_at',
             'send_email',
             'latitude',
-            'longitude'
+            'longitude',
+            'location'
           ]
       ]);
   }
 
-
+  
 }

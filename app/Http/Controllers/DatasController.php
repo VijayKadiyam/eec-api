@@ -65,11 +65,12 @@ class DatasController extends Controller
     $data = new Data($data);
     $data->save();
 
-    return 'SUCCESS';
+    // return 'SUCCESS';
     
-    // return response()->json([
-    //   'data'    =>  $data
-    // ], 201); 
+    return response()->json([
+      'response'=>  'SUCCESS',
+      'data'    =>  $data
+    ], 201); 
   }
 
   public function store(Request $request, Unit $unit)

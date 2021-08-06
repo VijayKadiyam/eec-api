@@ -91,6 +91,7 @@ class DataTest extends TestCase
           ]
         ])
       ->assertJsonStructureExact([
+          'response', 
           'data'   => [
             'data',
             'imei_number', 
@@ -110,7 +111,7 @@ class DataTest extends TestCase
             'updated_at',
             'created_at',
             'id'
-          ]
+          ],
         ]);
   }
 
@@ -175,6 +176,8 @@ class DataTest extends TestCase
             'reserved',
             'created_at',
             'updated_at',
+            'water_supply_hrs',
+            'water_supply_qty'
           ]
       ]);
   }
