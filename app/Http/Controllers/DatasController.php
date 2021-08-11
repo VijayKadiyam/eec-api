@@ -65,6 +65,59 @@ class DatasController extends Controller
     $data = new Data($data);
     $data->save();
 
+    // For Jharkhand API
+    // if($unit->location == 'Jharkhand') {
+      $queryStringsArray = [];
+      $queryStringsArray[] = ['key'   =>  'VendorId', 'value' =>  'STO04'];
+      $queryStringsArray[] = ['key'   =>  'DeviceType', 'value' =>  'PUMP'];
+      $queryStringsArray[] = ['key'   =>  'DeviceName', 'value' =>  'RMS' . $unit->id];
+      $queryStringsArray[] = ['key'   =>  'DeviceId', 'value' =>  $unit->imei_number];
+      $queryStringsArray[] = ['key'   =>  'Date', 'value' =>  Carbon::parse($data->date)->format('Y-m-d')];
+      $queryStringsArray[] = ['key'   =>  'Time', 'value' =>  $data->time];
+      $queryStringsArray[] = ['key'   =>  'TimeZone', 'value' =>  'Asia/Kolkata'];
+      $queryStringsArray[] = ['key'   =>  'Latitude', 'value' =>  $unit->latitude];
+      $queryStringsArray[] = ['key'   =>  'Longitude', 'value' =>  $unit->longitude];
+      $queryStringsArray[] = ['key'   =>  'SoftwareVer', 'value' =>  '1.0.0'];
+      $queryStringsArray[] = ['key'   =>  'SingleStrength', 'value' =>  '20'];
+      $queryStringsArray[] = ['key'   =>  'MotorSpeed', 'value' =>  'NA'];
+      $queryStringsArray[] = ['key'   =>  'DV', 'value' =>  'NA'];
+      $queryStringsArray[] = ['key'   =>  'DC', 'value' =>  'NA'];
+      $queryStringsArray[] = ['key'   =>  'MotorVoltage', 'value' =>  $data->voltage];
+      $queryStringsArray[] = ['key'   =>  'MotorCurrent', 'value' =>  $data->current];
+      $queryStringsArray[] = ['key'   =>  'CurrentFlow', 'value' =>  ''];
+      $queryStringsArray[] = ['key'   =>  'InstPower', 'value' =>  ''];
+      $queryStringsArray[] = ['key'   =>  'TotalEnrgy', 'value' =>  ''];
+      $queryStringsArray[] = ['key'   =>  'TotalOnTime', 'value' =>  ''];
+      $queryStringsArray[] = ['key'   =>  'Status', 'value' =>  $data->pump_status];
+      $queryStringsArray[] = ['key'   =>  'FaultStatus', 'value' =>  ''];
+      $queryStringsArray[] = ['key'   =>  'CurrentSensor', 'value' =>  ''];
+      $queryStringsArray[] = ['key'   =>  'FaultCode', 'value' =>  ''];
+      $queryStringsArray[] = ['key'   =>  'TotalFlow', 'value' =>  ''];
+      $queryStringsArray[] = ['key'   =>  'TotalOffTime', 'value' =>  ''];
+      $queryStringsArray[] = ['key'   =>  'Temp', 'value' =>  $data->temperature];
+      $queryStringsArray[] = ['key'   =>  'SpeedStatus', 'value' =>  ''];
+      $queryStringsArray[] = ['key'   =>  'OutputPower', 'value' =>  $data->voltage & $data->current];
+
+      $qString = '';
+
+      $count = 0;
+      foreach($queryStringsArray as $queryString) {
+        if($count != 0) {
+          $qString = $qString . '&';
+        }
+        $qString = $qString . $queryString['key'] . '=' . $queryString['value'];
+        $count++;
+      }
+
+      $endpoint = "https://gis.jharkhand.gov.in/ejalportal/RMS_DATA.asmx/Get_RMS_DATA?" . $qString;
+      $client = new \GuzzleHttp\Client();
+      $response = $client->request('GET', $endpoint);
+
+      // var_dump($response);
+      // $statusCode = $response->getStatusCode();
+      // $content = json_decode($response->getBody(), true);
+    // }
+
     // return 'SUCCESS';
     
     return response()->json([
