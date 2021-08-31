@@ -66,6 +66,7 @@ class DatasController extends Controller
     $data->save();
 
     // For Jharkhand API
+    if(isset($unit)) {
     // if($unit->location == 'Jharkhand') {
       $queryStringsArray = [];
       $queryStringsArray[] = ['key'   =>  'VendorId', 'value' =>  'STO04'];
@@ -117,6 +118,7 @@ class DatasController extends Controller
       // $statusCode = $response->getStatusCode();
       // $content = json_decode($response->getBody(), true);
     // }
+    }
 
     // return 'SUCCESS';
     
