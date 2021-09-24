@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/vhosts/premelec/premelec-api
+    destination: /var/www/vhosts/eec/eec-api
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies
